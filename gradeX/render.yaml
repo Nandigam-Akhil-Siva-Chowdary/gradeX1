@@ -2,8 +2,10 @@ services:
   - type: web
     name: gradeX
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn gradeX.wsgi
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn gradeX.wsgi:application"
     envVars:
-      - key: DEBUG
-        value: False
+      - key: DJANGO_SETTINGS_MODULE
+        value: gradeX.settings
+      - key: PYTHON_VERSION
+        value: 3.11.9  
