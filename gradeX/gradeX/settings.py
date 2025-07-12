@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
 import dj_database_url
 
 from pathlib import Path
@@ -24,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-(m1@vd5376d59aa^6umpp6)oq0lokah*6fm)d1*sx7m@i+nh4_"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ['192.168.232.245', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["https://gradex.onrender.com"]
 
 
 
@@ -77,11 +78,7 @@ WSGI_APPLICATION = "gradeX.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://postgres:1234@localhost:5432/gradeX',
-        conn_max_age=600,
-        ssl_require=not DEBUG
-    )
+    'default': dj_database_url.config(default=os.environ.get('postgresql://gradex_db_user:5AsL0cNBEnYQWYG5Uqrkf4qpwNuo6jEw@dpg-d1p1keer433s73csjko0-a.oregon-postgres.render.com/gradex_db'))
 }
 
 
@@ -120,7 +117,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "calculator" / "static"]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
