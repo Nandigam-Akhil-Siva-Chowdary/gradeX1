@@ -12,3 +12,9 @@ services:
 
 
 python manage.py collectstatic --noinput
+
+static:
+  - type: static_dir
+    name: static
+    path: /static/
+    dir: staticfiles/
