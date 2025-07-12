@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-(m1@vd5376d59aa^6umpp6)oq0lokah*6fm)d1*sx7m@i+nh4_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ["https://gradex.onrender.com"]
+ALLOWED_HOSTS = ['gradex1-4.onrender.com', 'localhost', '127.0.0.1']
 
 
 
