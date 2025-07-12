@@ -79,8 +79,12 @@ WSGI_APPLICATION = "gradeX.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('postgresql://gradex_db_user:5AsL0cNBEnYQWYG5Uqrkf4qpwNuo6jEw@dpg-d1p1keer433s73csjko0-a.oregon-postgres.render.com/gradex_db'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
 }
+
 
 
 # Password validation
